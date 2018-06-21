@@ -10,12 +10,12 @@ export const TopBar = () => <AppBar position="static">
         <IconButton color="inherit" aria-label="Menu" 
                     component={props => 
                              <Link to={urls.home.path} {...props}/>}
-            >
-            <MenuIcon/>
+        >
+        <MenuIcon/>
         </IconButton>
 
         <Typography type="title" color="inherit">
-            My Awesome React App
+        Start Up's Now
         </Typography>
 
     </Toolbar>

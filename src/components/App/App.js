@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 
 //Router
 import {Route} from 'react-router-dom';
-import {urls} from "../../utils/urlUtils";
+import {urls, privateUrls} from "../../utils/urlUtils";
 
 //Firebase
 import FirebaseService from '../../services/FirebaseService'
@@ -49,7 +49,11 @@ class App extends Component {
                           <Route exact
                                   path={urls.add.path}
                                   render={(props) => <Add {...props}/>}
-                          />        
+                          />  
+                          <Route exact
+                                  path={privateUrls.edit.path}
+                                  render={(props) => <Add {...props}/>}
+                          />         
                         </CardContent>
                       </Card>
                     </div>

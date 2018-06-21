@@ -1,6 +1,8 @@
 import React from 'react';
-import {Button, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography, Link} from "material-ui";
+import {Link}from 'react-router-dom';
+import {Button, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography} from "material-ui";
 import FirebaseService from "../../services/FirebaseService";
+import {privateUrls} from "../../utils/urlUtils";
 
 export const DataTable = ({data}) => {
 
@@ -11,7 +13,7 @@ export const DataTable = ({data}) => {
     return <React.Fragment>
         <Grid container justify="center" alignItems="flex-star">
         <Grid item xs={12}>
-        <Typography variant="headline" component="h2">Add New</Typography>
+        <Typography variant="headline" component="h2">Start Up's</Typography>
         <Table>
             <TableHead>
                 <TableRow>
@@ -36,11 +38,10 @@ export const DataTable = ({data}) => {
                             <TableCell>{item.projeto}</TableCell>
                             <TableCell>
                                 <Button onClick={() => remove(item.key)}>Remover</Button>
-                                <Button 
-                                    component={props => 
-                                        <Link to={privateUrls.edit.pathWithouParam + item.key}    
-                                            {...props}/>}>
-                                            Edit
+                                <Button component={props => 
+                                <Link to={privateUrls.edit.pathWithouParam + item.key}    
+                                        {...props}/>}>
+                                    Edit
                                 </Button>
                             </TableCell>
                         </TableRow>

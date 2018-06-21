@@ -4,36 +4,33 @@ import React, {Component} from "react";
 //rotas
 import {urls} from "../../utils/urlUtils";
 import { withRouter } from "react-router-dom";
-
 //firebase.
 import FirebaseService from "../../services/FirebaseService";
 
 //estilos e peças.
 import {Button, TextField, Typography} from "material-ui";
-import { firebaseDatabase } from "../../utils/firebaseUtils";
 
 class Add extends Component {
 
-    state = {id:null, nome: '', responsavel: '', cnpj: '', projeto: ''};
+    state = {id: null, nome: '', responsavel: '', cnpj: '', projeto: ''};
 
-    componentWillUnmount = () => {
+    componentWillMount = () => {
         const {id} = this.props.match.params;
-
         if (!(id === undefined || !id)) {
-           this.setState({id});
-           FirebaseService.getUniqueDataBy('startups', id, (data) => this.setState({...data},
-            () => console.log(this.state)));
+            this.setState({id});
+            FirebaseService.getUniqueDataBy('startups', id, (data) => this.setState({...data}, () => console.log(this.state)));
         }
+        
     };
 
 
     submit = (event) => {
         event.preventDefault();
 
-        const {nome} = this;
-        const {responsavel} = this;
-        const {cnpj} = this;
-        const {projeto} = this;
+        const {nome} = this.state;
+        const {responsavel} = this.state;
+        const {cnpj} = this.state;
+        const {projeto} = this.state;
 
         let objToSubmit =  {
             nome,
@@ -45,7 +42,7 @@ class Add extends Component {
         if (this.props.match.params.id === undefined) {
             FirebaseService.pushData('startups', objToSubmit);
         } else {
-            FirebaseDatabase.updateData(this.props.match.params.id, 'startups', objToSubmit)
+            FirebaseService.updateData(this.props.match.params.id, 'startups', objToSubmit)
         }
 
         this.props.history.push(urls.data.path);
@@ -66,7 +63,7 @@ class Add extends Component {
 
             <TextField className="input-field"
                        type="text"
-                       defaultValue={''}
+                       value={this.state.nome}
                        label="Nome"
                        required
                        onChange={this.handleChange('nome')}/>
@@ -74,24 +71,24 @@ class Add extends Component {
 
             <TextField className="input-field"
                        type="text"
+                       value={this.state.responsavel}
                        label="responsavel"
-                       defaultValue={''}
                        required
                        onChange={this.handleChange('responsavel')}/>
 
 
             <TextField className="input-field"
                        type="text"
+                       value={this.state.cnpj}
                        label="cnpj"
-                       defaultValue={''}
                        required
                        onChange={this.handleChange('cnpj')}/>
 
 
             <TextField className="input-field"
                        type="text"
+                       value={this.state.projeto}
                        label="Nome do projeto"
-                       defaultValue={''}
                        required
                        onChange={this.handleChange('projeto')}/>
 
