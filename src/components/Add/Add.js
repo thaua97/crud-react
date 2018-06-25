@@ -16,12 +16,13 @@ class Add extends Component {
 
     componentWillMount = () => {
         const {id} = this.props.match.params;
+
         if (!(id === undefined || !id)) {
             this.setState({id});
             FirebaseService.getUniqueDataBy('startups', id, (data) => this.setState({...data}, () => console.log(this.state)));
         }
-        
-    };
+
+};
 
 
     submit = (event) => {
