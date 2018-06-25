@@ -11,15 +11,15 @@ Link da apresentação: https://youtu.be/LN_zKP_NNBs
 ### Clone
 
 ```
-//Baixar o aplicativo.
+// Baixar o aplicativo.
 git clone https://github.com/thaua97/crud-react.git
 
-//ir ao diretorio
+// ir ao diretorio
 cd  [diretorio]
 
-//instalar as depependencias
+// instalar as depependencias
 npm install
 
-//iniciar a aplicação
+// iniciar a aplicação
 npm start
 ```
